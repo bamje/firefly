@@ -20,7 +20,7 @@ jobs:
             run: |
                 ssh -o "StrictHostKeyChecking no" pebbles@portainer.opaleye-trout.ts.net "
                 cd /home/pebbles/workflows
-                git clone https://github.com/${{ env.GITHUB_REPOSITORY }}
+                git clone https://github.com/bamje/firefly.git
                 cd firefly
                 age -d -i $AGE_KEY tar.env.age > tar.env
                 tar xfv tar.env
