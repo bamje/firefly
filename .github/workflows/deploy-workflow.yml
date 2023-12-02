@@ -1,4 +1,4 @@
-name: Terraform build test
+name: Firefly app deploy
 on:
     push:
         branches:
@@ -20,8 +20,8 @@ jobs:
             run: |
                 ssh -o "StrictHostKeyChecking no" pebbles@portainer.opaleye-trout.ts.net "
                 cd /home/pebbles/workflows
-                git clone
-                cd $GITHUB_REPOSITORY
+                git clone https://github.com/${{ env.GITHUB_REPOSITORY }}
+                cd firefly
                 age -d -i $AGE_KEY tar.env.age > tar.env
                 tar xfv tar.env
                 docker compose up -d
