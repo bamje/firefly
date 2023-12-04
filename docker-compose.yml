@@ -19,10 +19,10 @@ services:
     restart: always
     volumes:
       - firefly_upload:/var/www/html/storage/upload
-    env_file: env/.app.env
+    env_file: env/app.env
     labels:
     - "traefik.enable=true"
-    - "traefik.http.routers.firefly.rule=Host(`${FQDN_URL}`)"
+    - "traefik.http.routers.firefly.rule=Host(`${HOST_DOMAIN}`)"
     - "traefik.http.routers.firefly.tls=true"
     - "traefik.http.routers.firefly.middlewares=secureHeaders@file"
     - "traefik.http.services.firefly.loadbalancer.server.port=8080"
@@ -41,7 +41,7 @@ services:
       - traefik
     labels:
     - "traefik.enable=true"
-    - "traefik.http.routers.fireimp.rule=Host(`${FQDN_URL}`)"
+    - "traefik.http.routers.fireimp.rule=Host(`${HOST_DOMAIN}`)"
     - "traefik.http.routers.fireimp.tls=true"
     - "traefik.http.routers.fireimp.middlewares=secureHeaders@file"
     - "traefik.http.services.fireimp.loadbalancer.server.port=8080"
@@ -49,7 +49,7 @@ services:
     #   - '81:8080'
     depends_on:
       - app
-    env_file: env/.importer.env
+    env_file: env/importer.env
 
   db:
     image: mariadb
@@ -58,7 +58,7 @@ services:
     networks:
       - firefly
     restart: always
-    env_file: env/.db.env
+    env_file: env/db.env
     volumes:
       - firefly_db:/var/lib/mysql
 
