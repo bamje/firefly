@@ -23,7 +23,7 @@ jobs:
                 git clone https://github.com/bamje/firefly.git
                 cd firefly
                 age -d -i $AGE_KEY env.tar.age > env.tar
-                tar xfv tar.env
+                tar xfv env.tar
                 docker compose up -d
                 "
             
