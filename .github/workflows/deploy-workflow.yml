@@ -21,10 +21,7 @@ jobs:
                 ssh -o "StrictHostKeyChecking no" pebbles@portainer.opaleye-trout.ts.net "
                 cd /home/pebbles/workflows
                 git clone https://github.com/bamje/firefly.git
-                wait 3
                 cd firefly
-                age -d -i $AGE_KEY env.tar.age > env.tar
-                tar xfv env.tar
-                docker compose up -d
+                sudo sh deploy.sh
                 "
             
