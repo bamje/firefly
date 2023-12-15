@@ -22,6 +22,6 @@ jobs:
                 cd /home/pebbles/workflows
                 git clone https://github.com/bamje/firefly.git
                 cd firefly
-                sudo sh deploy.sh
+                sudo ./deploy.sh
                 "
             
