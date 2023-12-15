@@ -17,7 +17,7 @@ else
   sudo docker compose up -d
 fi
 
-wait 30
+sleep 30
 curl https://firefly.lab.bamje.io
 exit
 
