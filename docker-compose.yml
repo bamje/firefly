@@ -19,7 +19,9 @@ services:
     restart: always
     volumes:
       - firefly_upload:/var/www/html/storage/upload
-    env_file: .env.app
+    env_file:
+      - .env
+      - app.env
     labels:
     - "traefik.enable=true"
     - "traefik.http.routers.firefly.rule=Host(`${FF_HOST_DOMAIN}`)"
@@ -49,7 +51,9 @@ services:
     #   - '81:8080'
     depends_on:
       - app
-    env_file: .env.importer
+    env_file:
+      - .env
+      - importer.env
 
   db:
     image: mariadb
@@ -58,7 +62,7 @@ services:
     networks:
       - firefly
     restart: always
-    env_file: .env.db
+    env_file: db.env
     volumes:
       - firefly_db:/var/lib/mysql
 
